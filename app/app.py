@@ -18,7 +18,13 @@ def home():
 def predict():
     try:
         # Get inputs from HTML form
-        age = int(request.form['Age'])
+        try:
+            age = int(request.form['age'])
+            if age < 10 or age > 100:
+                return render_template('index.html', prediction_text="⚠️ Please enter a valid age between 10 and 100.")
+        except (ValueError, KeyError):
+            return render_template('index.html', prediction_text="❌ Invalid input. Please fill all fields correctly.")
+
         gender = int(request.form['Gender'])
         self_employed = int(request.form['self_employed'])
         family_history = int(request.form['family_history'])

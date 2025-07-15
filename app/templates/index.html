@@ -91,7 +91,8 @@
         <form method="POST" action="/predict">
 
             <label for="Age">Age:</label>
-            <input type="number" name="Age" required>
+            <input type="number" id="age" name="age" min="10" max="100" required>
+
 
             <label for="Gender">Gender:</label>
             <select name="Gender" required>
